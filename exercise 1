@@ -1,0 +1,42 @@
+// Constant declaration for cubic inches in a cubic foot
+CONSTANT CUBIC_INCHES_IN_CUBIC_FOOT = 1728
+
+// Variable declarations
+DECLARE model_name AS STRING
+DECLARE height, width, depth AS INTEGER
+DECLARE capacity AS REAL
+
+// Start of the main program
+START
+    CALL GetInput()
+    WHILE model_name != "XXX"
+        CALL CalculateCapacity()
+        CALL DisplayOutput()
+        CALL GetInput()
+    END WHILE
+    PRINT "End of job"
+END
+
+// Procedure for getting user input
+PROCEDURE GetInput()
+    PRINT "Enter refrigerator model name (or 'XXX' to quit):"
+    INPUT model_name
+    IF model_name != "XXX" THEN
+        PRINT "Enter height in inches:"
+        INPUT height
+        PRINT "Enter width in inches:"
+        INPUT width
+        PRINT "Enter depth in inches:"
+        INPUT depth
+    END IF
+END PROCEDURE
+
+// Procedure for calculating refrigerator capacity
+PROCEDURE CalculateCapacity()
+    capacity = (height * width * depth) / CUBIC_INCHES_IN_CUBIC_FOOT
+END PROCEDURE
+
+// Procedure for displaying the output
+PROCEDURE DisplayOutput()
+    PRINT "The capacity of " + model_name + " is " + capacity + " cubic feet."
+END PROCEDURE
